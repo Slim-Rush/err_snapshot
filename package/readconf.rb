@@ -36,7 +36,6 @@ class CollectLogs < ReadConf
         case func
           when "process" then cmd_list = ["lsof -c #{key}","ps aux|grep #{key}|grep -v grep"]
           when "port"    then cmd_list = ["netstat -an | grep #{value}"]
-          when "applog"  then cmd_list = ["tail -100 #{value}"]
           when "load"    then cmd_list = ["w", "top -n5 -d1", "vmstat 1 10", "df -h", "df -i", 
                                           "dd bs=64k count=4k if=/dev/zero of=/tmp/test", "free -m" ,"ifconfig",
                                           "netstat -rn", "netstat -an | grep LISTEN", 
